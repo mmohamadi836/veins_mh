@@ -28,16 +28,6 @@ using Veins::TraCIScenarioManager;
 using Veins::TraCICommandInterface;
 
 
-// mobility = TraCIMobilityAccess().get(getParentModule());
-// traci = mobility->getCommandInterface();
-// traciVehicle = mobility->getVehicleCommandInterface();
-
-//seq = 0;
-  // timeout = 2.0;
-  // timeoutEvent = new cMessage("timeoutEvent");
-  // scheduleAt(simTime()+timeout, timeoutEvent);
-
-
 struct NeighborInfo
 {
     string RoadId;
@@ -105,11 +95,7 @@ void TraCIDemo11p::onWSM(WaveShortMessage* wsm) {
 void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
 
     if (msg == timeoutEvent1) {
-           // If we receive the timeout event, that means the packet hasn't
-           // arrived in time and we have to re-send it.
-           //EV << "Timeout expired, resending message and restarting timer\n";
-           ///cMessage *newMsg = new cMessage("tictocMsg");
-           ///send(newMsg, "out");
+           
        //
        //string vId = bsm->getExternalId();
        meanNInfo ds;
@@ -126,11 +112,9 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        //int a =
        for(map<pair<string,string>,NeighborInfo>::iterator it= NeighborTables.begin(); it != NeighborTables.end() ; it++)
        {
-          //itvector=find(roads.begin(),roads.end(),it->second.RoadId);
-          //if(itvector == roads.end() )
-          //{
+          
               roads.push_back(it->second.RoadId);
-          //}
+          
        }
        roads.unique();
        double meanSpeed=0;
@@ -143,11 +127,7 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
                       nei.push_back(it->first.first);
                       meanSpeed += it->second.speed;
                   }
-                  //itvector=find(roads.begin(),roads.end(),it->second.RoadId);
-                  //if(listit == roads.end() )
-                  //{
-                      //roads.push_back(it->second.RoadId);
-                  //}
+                 
               }
            nei.unique();
            int n= uniNei.size();
@@ -158,29 +138,7 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        }
        //std::list<std::string> listRoadIds= traci->getRouteIds();
 
-       /*
-       int nV = roads.size();
-       int density=0;
-
-       std::list<std::string> uniList;
-       int nL= listRoadIds.size();
-
-       for(vector<string>::iterator itt=roads.begin() ; itt != roads.end() ; itt++)
-       {
-           for(map<pair<string,string>,NeighborInfo>::iterator it= NeighborTables.begin(); it != NeighborTables.end() ; it++)
-           {
-              if (it->second.RoadId == itt->data())
-              {
-                  ++density;
-              }
-              itvector=find(roads.begin(),roads.end(),it->second.RoadId);
-              if(itvector == roads.end() )
-              {
-                  roads.push_back(it->second.RoadId);
-              }
-           }
-       }
-*/
+       
        //neighbor.clear();
        NeighborTables.clear();
        receivedBSMs1= generatedBSMs1=0;
@@ -192,16 +150,7 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        //timeoutEvent1 = new cMessage("timeoutEvent1");
        scheduleAt(simTime()+timeout1, timeoutEvent1);
 
-       ///else {  // message arrived
-               // Acknowledgement received -- delete the received message and cancel
-               // the timeout event.
-           ///EV << "Timer cancelled.\n";
-           //delete msg;
-           // Ready to send another one.
-           ///cMessage *newMsg = new cMessage("tictocMsg");
-           ///send(newMsg, "out");
-           ///scheduleAt(simTime()+timeout, timeoutEvent);
-       ///}
+      
    }
 
     if (WaveShortMessage* wsm = dynamic_cast<WaveShortMessage*>(msg)) {
@@ -223,11 +172,7 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
         // just send BSM Or WSA
         BaseWaveApplLayer::handleSelfMsg(msg);
 
-        //for(map<string,NeighborInfo>::iterator it=NeighborTables.begin() ; it != NeighborTables.end(); it++ )
-        //{
-            //it->second.MeanSpeed=15;
-            //sp=
-        //}
+       
     }
 }
 
@@ -294,29 +239,10 @@ void TraCIDemo11p::onBSM(BasicSafetyMessage* bsm)
     //test1<<vId<<"    "<<bsm->getSenderSpeed1() <<endl;
     //test1.close();
 }
-        /*
-void TraCIDemo11p::handleMessage(cMessage *msg)
-{
-    if (WaveShortMessage* wsm = dynamic_cast<WaveShortMessage*>(msg)) {
-
-    //switch (msg->getKind()) {
-        //case SEND_BEACON_EVT: {
-            if (BasicSafetyMessage* bsm = dynamic_cast<BasicSafetyMessage*>(wsm))
-            {
-                //Coord speed;
-
-                //test1.open("f:/ds.txt",ios::app);
-                //test1<< x<<"    "<< y<<"    "<<simTime() <<"    "<<mobility->getSpeed()<<endl;
-                // test1.close();
-                   // }
-             }
-        }
-    //}
-    //}
-}
-*/
+        
 void TraCIDemo11p::finish()
 {
+  /*
     test1.open("f:/ds.txt",ios::app);
 
     for(map<pair<string,string>,meanNInfo>::iterator it= MeanNeighborInfo.begin(); it != MeanNeighborInfo.end() ; it++)
@@ -324,4 +250,5 @@ void TraCIDemo11p::finish()
        test1<<mobility->getExternalId()<<"     "<<it->first.first<<"     "<<it->first.second <<"    "<<it->second.density<<"   "<<it->second.speed<<"   "<<it->second.pdr <<endl;
     }
     test1.close();
+*/
 }
