@@ -91,7 +91,12 @@ void TraCIDemo11p::onWSM(WaveShortMessage* wsm) {
 void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
 
     if (msg == timeoutEvent1) {
+<<<<<<< HEAD
 
+=======
+           
+       //
+>>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
        //string vId = bsm->getExternalId();
        meanNInfo ds;
        string time=simTime().str();
@@ -107,9 +112,15 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        //int a =
        for(map<pair<string,string>,NeighborInfo>::iterator it= NeighborTables.begin(); it != NeighborTables.end() ; it++)
        {
+<<<<<<< HEAD
 
               roads.push_back(it->second.RoadId);
 
+=======
+          
+              roads.push_back(it->second.RoadId);
+          
+>>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
        }
        roads.unique();
        double meanSpeed=0;
@@ -122,7 +133,11 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
                       nei.push_back(it->first.first);
                       meanSpeed += it->second.speed;
                   }
+<<<<<<< HEAD
 
+=======
+                 
+>>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
               }
            nei.unique();
            int n= uniNei.size();
@@ -133,8 +148,13 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        }
        //std::list<std::string> listRoadIds= traci->getRouteIds();
 
+<<<<<<< HEAD
 
 
+=======
+       
+       //neighbor.clear();
+>>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
        NeighborTables.clear();
        receivedBSMs1= generatedBSMs1=0;
        mac1->statsReceivedPackets1=0;
@@ -144,6 +164,11 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        cancelEvent(timeoutEvent1);
        //timeoutEvent1 = new cMessage("timeoutEvent1");
        scheduleAt(simTime()+timeout1, timeoutEvent1);
+<<<<<<< HEAD
+=======
+
+      
+>>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
    }
 
     if (WaveShortMessage* wsm = dynamic_cast<WaveShortMessage*>(msg)) {
@@ -165,7 +190,11 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
         // just send BSM Or WSA
         BaseWaveApplLayer::handleSelfMsg(msg);
 
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
     }
 }
 
@@ -226,10 +255,17 @@ void TraCIDemo11p::onBSM(BasicSafetyMessage* bsm)
     //test1<<vId<<"    "<<bsm->getSenderSpeed1() <<endl;
     //test1.close();
 }
+<<<<<<< HEAD
 
 void TraCIDemo11p::finish()
 {
     /*
+=======
+        
+void TraCIDemo11p::finish()
+{
+  /*
+>>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
     test1.open("f:/ds.txt",ios::app);
 
     for(map<pair<string,string>,meanNInfo>::iterator it= MeanNeighborInfo.begin(); it != MeanNeighborInfo.end() ; it++)

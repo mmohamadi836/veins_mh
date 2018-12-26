@@ -53,6 +53,7 @@ class TraCIDemo11p : public BaseWaveApplLayer {
 		bool sentMessage;
 		int currentSubscribedServiceId;
 		Mac1609_4* mac1;
+<<<<<<< HEAD
 
 	protected:
         virtual void onWSM(WaveShortMessage* wsm);
@@ -63,6 +64,18 @@ class TraCIDemo11p : public BaseWaveApplLayer {
 
 		virtual void onBSM(BasicSafetyMessage* bsm);
 		virtual void finish();
+=======
+		
+	protected:
+        virtual void onWSM(WaveShortMessage* wsm);
+        virtual void onWSA(WaveServiceAdvertisment* wsa);
+       
+        virtual void handleSelfMsg(cMessage* msg);
+	virtual void handlePositionUpdate(cObject* obj);
+		
+	virtual void onBSM(BasicSafetyMessage* bsm);
+	virtual void finish();
+>>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
 };
 
 #endif
