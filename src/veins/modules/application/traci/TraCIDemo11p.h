@@ -38,13 +38,13 @@
  */
 
 
-// MAHBOUBEH
+
 
 class TraCIDemo11p : public BaseWaveApplLayer {
 	private:
     cMessage *timeoutEvent1;
     simtime_t timeout1;
-    int a;
+
 	public:
 		virtual void initialize(int stage);
 
@@ -53,7 +53,7 @@ class TraCIDemo11p : public BaseWaveApplLayer {
 		bool sentMessage;
 		int currentSubscribedServiceId;
 		Mac1609_4* mac1;
-<<<<<<< HEAD
+
 
 	protected:
         virtual void onWSM(WaveShortMessage* wsm);
@@ -64,7 +64,7 @@ class TraCIDemo11p : public BaseWaveApplLayer {
 
 		virtual void onBSM(BasicSafetyMessage* bsm);
 		virtual void finish();
-=======
+
 		
 	protected:
         virtual void onWSM(WaveShortMessage* wsm);
@@ -75,7 +75,7 @@ class TraCIDemo11p : public BaseWaveApplLayer {
 		
 	virtual void onBSM(BasicSafetyMessage* bsm);
 	virtual void finish();
->>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
+
 };
 
 #endif
