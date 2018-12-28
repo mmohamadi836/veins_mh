@@ -44,7 +44,7 @@ class TraCIDemo11p : public BaseWaveApplLayer {
 	private:
     cMessage *timeoutEvent1;
     simtime_t timeout1;
-
+    double rowi=0;
 	public:
 		virtual void initialize(int stage);
 
@@ -64,17 +64,6 @@ class TraCIDemo11p : public BaseWaveApplLayer {
 
 		virtual void onBSM(BasicSafetyMessage* bsm);
 		virtual void finish();
-
-		
-	protected:
-        virtual void onWSM(WaveShortMessage* wsm);
-        virtual void onWSA(WaveServiceAdvertisment* wsa);
-       
-        virtual void handleSelfMsg(cMessage* msg);
-	virtual void handlePositionUpdate(cObject* obj);
-		
-	virtual void onBSM(BasicSafetyMessage* bsm);
-	virtual void finish();
 
 };
 

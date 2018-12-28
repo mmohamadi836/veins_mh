@@ -226,6 +226,7 @@ void BaseWaveApplLayer::handleLowerMsg(cMessage* msg) {
     if (BasicSafetyMessage* bsm = dynamic_cast<BasicSafetyMessage*>(wsm)) {
         receivedBSMs++;
         receivedBSMs1++;
+
         onBSM(bsm);
     }
     else if (WaveServiceAdvertisment* wsa = dynamic_cast<WaveServiceAdvertisment*>(wsm)) {

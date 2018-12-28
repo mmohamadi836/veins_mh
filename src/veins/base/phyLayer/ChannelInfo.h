@@ -20,7 +20,7 @@ using Veins::AirFrame;
  * ChannelInfo is a passive class meaning the user has to tell it when a new
  * AirFrame starts and an existing ends.
  *
- * Once an AirFrame has been added to the ChannelInfo the ChannelInfo holds the
+ * Once an AirFrame has been added to the ChannelInfo, the ChannelInfo holds the
  * ownership of this AirFrame even if the AirFrame is removed again from the
  * ChannelInfo. This is necessary because the ChannelInfo has to be able to
  * store also the AirFrames which are over but still intersect with an currently

@@ -17,7 +17,14 @@ cplusplus {{
 
 class MacPkt;
 
+//packet MacPkt {
+//LAddress::L2Type destAddr; // destination mac address
+//LAddress::L2Type srcAddr;  // source mac address
+//long             sequenceId; // Sequence Number to detect duplicate messages
+//}
 //
+//
+
 // Defines all fields of an 802.11 MAC frame
 //
 packet Mac80211Pkt extends MacPkt

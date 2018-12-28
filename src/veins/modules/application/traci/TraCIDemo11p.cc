@@ -42,10 +42,15 @@ struct meanNInfo
     long pdr;
 };
 
+struct unn
+{
+    string s;
+};
 Define_Module(TraCIDemo11p);
 
 map<pair<string,string>,NeighborInfo> NeighborTables; //key is nId and time
 map<pair<string,string>,meanNInfo> MeanNeighborInfo; //key is RoadId and time
+map<pair<string,string>,unn> uni1; //key is vehId and time
 
 ofstream test1;
 
@@ -91,12 +96,7 @@ void TraCIDemo11p::onWSM(WaveShortMessage* wsm) {
 void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
 
     if (msg == timeoutEvent1) {
-<<<<<<< HEAD
 
-=======
-           
-       //
->>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
        //string vId = bsm->getExternalId();
        meanNInfo ds;
        string time=simTime().str();
@@ -112,15 +112,8 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        //int a =
        for(map<pair<string,string>,NeighborInfo>::iterator it= NeighborTables.begin(); it != NeighborTables.end() ; it++)
        {
-<<<<<<< HEAD
-
               roads.push_back(it->second.RoadId);
-
-=======
-          
               roads.push_back(it->second.RoadId);
-          
->>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
        }
        roads.unique();
        double meanSpeed=0;
@@ -133,11 +126,8 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
                       nei.push_back(it->first.first);
                       meanSpeed += it->second.speed;
                   }
-<<<<<<< HEAD
 
-=======
-                 
->>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
+
               }
            nei.unique();
            int n= uniNei.size();
@@ -148,13 +138,9 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        }
        //std::list<std::string> listRoadIds= traci->getRouteIds();
 
-<<<<<<< HEAD
 
-
-=======
-       
        //neighbor.clear();
->>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
+
        NeighborTables.clear();
        receivedBSMs1= generatedBSMs1=0;
        mac1->statsReceivedPackets1=0;
@@ -164,11 +150,7 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
        cancelEvent(timeoutEvent1);
        //timeoutEvent1 = new cMessage("timeoutEvent1");
        scheduleAt(simTime()+timeout1, timeoutEvent1);
-<<<<<<< HEAD
-=======
 
-      
->>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
    }
 
     if (WaveShortMessage* wsm = dynamic_cast<WaveShortMessage*>(msg)) {
@@ -189,12 +171,6 @@ void TraCIDemo11p::handleSelfMsg(cMessage* msg) {
     else {
         // just send BSM Or WSA
         BaseWaveApplLayer::handleSelfMsg(msg);
-
-<<<<<<< HEAD
-
-=======
-       
->>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
     }
 }
 
@@ -231,47 +207,90 @@ void TraCIDemo11p::handlePositionUpdate(cObject* obj) {
 
 void TraCIDemo11p::onBSM(BasicSafetyMessage* bsm)
 {
-    string vId = bsm->getExternalId();
-    NeighborInfo neighbor;
-    string time=simTime().str();
-    neighbor.speed= bsm->getSenderSpeed1();
-    neighbor.RoadId=mobility->getRoadId();
+    //m string VehicleId=mobility->getExternalId();
+    //m string vId = bsm->getExternalId();
+    //m NeighborInfo neighbor;
+    //m string time=simTime().str();
+    //m neighbor.speed= bsm->getSenderSpeed1();
+    //m neighbor.RoadId=mobility->getRoadId();
+    //m NeighborTables[make_pair(vId, time)]=neighbor;
 
 
-    //statsTotalBusyTime1;
-    NeighborTables[make_pair(vId, time)]=neighbor;
 
-    //double x=bsm->getSenderSpeed().x;
-    //double y=bsm->getSenderSpeed().y;
-    //mobility->getExternalId();
     //myId : is calling module Id
     //traci->road(mobility->getRoadId().c_str()).getMeanSpeed();
-    //neighbor.speed=msg->getTotalMessageCount();
     //msg->getId();
-    //bsm->getSenderModuleId();
     //Coord dir=mobility->getCurrentDirection();
 
-    //test1.open("f:/ds.txt",ios::app);
-    //test1<<vId<<"    "<<bsm->getSenderSpeed1() <<endl;
-    //test1.close();
-}
-<<<<<<< HEAD
 
-void TraCIDemo11p::finish()
-{
-    /*
-=======
-        
-void TraCIDemo11p::finish()
-{
-  /*
->>>>>>> 45ddc2c28ff926d93c5a4bdcb2279369f7edcb03
-    test1.open("f:/ds.txt",ios::app);
-
-    for(map<pair<string,string>,meanNInfo>::iterator it= MeanNeighborInfo.begin(); it != MeanNeighborInfo.end() ; it++)
-    {
-       test1<<mobility->getExternalId()<<"     "<<it->first.first<<"     "<<it->first.second <<"    "<<it->second.density<<"   "<<it->second.speed<<"   "<<it->second.pdr <<endl;
-    }
-    test1.close();
+/*
+    string vId = bsm->getExternalId();
+    unn temp;
+    string time=simTime().str();
+    temp.s= time;
+    string tStamp= bsm->getTimestamp().str();
+    uni1[make_pair(vId,tStamp)] = temp;
 */
+
+}
+
+void TraCIDemo11p::finish()
+{
+    //test1.open("f:/ds.txt",ios::app);
+
+    //for(map<pair<string,string>,meanNInfo>::iterator it= MeanNeighborInfo.begin(); it != MeanNeighborInfo.end() ; it++)
+    //{
+       //test1<<mobility->getExternalId()<<"     "<<it->first.first<<"     "<<it->first.second <<"    "<<it->second.density<<"   "<<it->second.speed<<"   "<<it->second.pdr <<endl;
+    //}
+    //test1.close();
+
+    string VehicleId=mobility->getExternalId();
+    string nameR= "f:/p_dbcc/c/file_" + VehicleId+ ".txt";
+    std::ifstream ifs(nameR);
+    string nameW= "f:/p_dbcc/g/file_" + VehicleId+ ".csv";
+    test1.open(nameW,ios::app);
+    double row;
+    int i=1;
+    int j=0;
+    std::string line;
+    //for(int i=1; i!=5; ++i)
+    //{
+        while(std::getline(ifs, line)) // read one line from ifs
+            {
+            std::istringstream iss(line); // access line as a stream
+
+            if(j==0)
+            {
+
+                iss >> row; // no need to read further
+                //double irt= row - rowi;
+                j++;
+            }else
+            {
+                iss >> row; // no need to read further
+                test1<<row <<"     ,       ";
+                ++i;
+                    if(i==5)
+                    {
+                        test1<<endl;
+                        i=1;
+                    }
+            }
+            }
+
+        //rowi=row;
+    //}
+       ifs.close();
+       test1.close();
+
+/*
+    string VehicleId=mobility->getExternalId();
+    string name= "f:/p_dbcc/d/file_" + VehicleId+ ".txt";
+        test1.open(name,ios::app);
+        for(map<pair<string,string>,unn>::iterator it= uni1.begin(); it != uni1.end() ; it++)
+           {
+            test1<< it->first.first<<"   "<<it->first.second<<"    "<< it->second.s<<endl;
+           }
+        test1.close();
+        */
 }
